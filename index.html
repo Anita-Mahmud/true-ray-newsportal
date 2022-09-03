@@ -10,25 +10,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="p-8">
+<body class="p-10">
     <header>
         <!-- navbar -->
-        <div class="navbar bg-base-100">
-            <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-3xl">True Ray</a>
-            </div>
-            <div class="flex-none">
-                <ul class="menu menu-horizontal p-0 text-xl">
-                    <li class="m-4"><a href="index.html">News</a></li>
-                    <li class="m-4"><a>Blog</a></li>
-                </ul>
-            </div>
-            <div class="dropdown dropdown-end m-4">
-                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+        <div class="flex flex-col w-full">
+            <div class="grid h-20 card bg-base-300 rounded-box place-items-center">
+                <div class="navbar bg-base-100">
+                    <div class="flex-1">
+                        <a class="btn btn-ghost normal-case text-3xl ">True Ray</a>
+                    </div>
+                    <div class="flex-none">
+                        <ul class="menu menu-horizontal p-0 text-xl">
+                            <li class="m-4 active"><a href="index.html" class="active">News</a></li>
+                            <li class="m-4"><a>Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown dropdown-end m-4">
+                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full ">
           <img src="https://placeimg.com/80/80/people" />
         </div>
       </label>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="grid card bg-base-300 rounded-box place-items-center p-4">
+                <ul class="menu menu-horizontal bg-base-100 rounded-box mx-auto" id="category-name-list">
+
+                </ul>
             </div>
         </div>
     </header>
