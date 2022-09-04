@@ -6,44 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>True Ray</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- custom css -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="p-10">
+<body class="container py-4">
+
     <header>
         <!-- navbar -->
-        <div class="flex flex-col w-full">
-            <div class="grid h-20 card bg-base-300 rounded-box place-items-center">
-                <div class="navbar bg-base-100">
-                    <div class="flex-1">
-                        <a class="btn btn-ghost normal-case text-3xl ">True Ray</a>
-                    </div>
-                    <div class="flex-none">
-                        <ul class="menu menu-horizontal p-0 text-xl">
-                            <li class="m-4 active"><a href="index.html" class="active">News</a></li>
-                            <li class="m-4"><a>Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown dropdown-end m-4">
-                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full ">
-          <img src="https://placeimg.com/80/80/people" />
-        </div>
-      </label>
+        <nav class="navbar navbar-light pb-5  border-bottom border-2">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-1 fw-semibold text-primary pro-name">True Ray</a>
+                <form class="d-flex me-3">
+                    <a class="btn btn-outline-primary me-3 fs-5 px-4 ">News</a>
+                    <a class="btn btn-outline-primary fs-5  px-4">Blog</a>
+                </form>
+            </div>
+        </nav>
+        <!-- category list -->
+        <ul class="list-group list-group-horizontal-sm border border-0 mx-auto pt-3 " id="category-name-list">
+        </ul>
+    </header>
+    <main>
+        <!-- category details -->
+        <div class="card mb-3 mt-5" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
             </div>
-            <div class="divider"></div>
-            <div class="grid card bg-base-300 rounded-box place-items-center p-4">
-                <ul class="menu menu-horizontal bg-base-100 rounded-box mx-auto" id="category-name-list">
-
-                </ul>
-            </div>
         </div>
-    </header>
-
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="./js/app.js"></script>
+</body>
+
 </body>
 
 </html>
