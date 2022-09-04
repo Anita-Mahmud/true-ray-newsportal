@@ -14,10 +14,18 @@ const displayCatList = category_lists => {
         <a onclick ="loadCategoryDetails('${cat_list.category_id}')" href="#" class="text-decoration-none text-secondary ">${cat_list.category_name}</a>
         `
         categoryLists.appendChild(li);
+
     });
 
 }
+const setSpinner = isLoading => {
+    const spinner = document.getElementById('spinner');
+    if (isLoading) {
+        spinner.classList.remove('d-none');
+    } else { spinner.classList.add('d-none'); }
+}
 const loadCategoryDetails = (id) => {
+    setSpinner(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
     fetch(url)
         .then(res => res.json())
@@ -26,6 +34,7 @@ const loadCategoryDetails = (id) => {
 }
 
 const displayCategoryDetails = (category_details) => {
+    setSpinner(false);
     const newsNumber = document.getElementById('news-number');
     newsNumber.value = `${category_details.length}  items found for this category`;
 
