@@ -30,8 +30,28 @@ const displayCategoryDetails = category_details => {
     category_details.sort((a, b) => {
         return b.total_view - a.total_view;
     });
+    const categoryDetails = document.getElementById('category-details');
     category_details.forEach(view => {
-
+        // console.log(view.title, view.total_view)
+        const { thumbnail_url, details, author, total_view } = view;
+        // console.log(thumbnail_url, details, author, total_view)
+        const cardDiv = document.createElement('div');
+        cardDiv.classList.add('card', 'mb-3');
+        cardDiv.innerHTML = `
+            <div class="row g-0 ">
+                        <div class="col-md-4 p-2">
+                            <img src="${thumbnail_url ?thumbnail_url:'No Image Available' }" class="img-fluid rounded-start " alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+            `;
+        categoryDetails.appendChild(cardDiv)
     })
 
 }
