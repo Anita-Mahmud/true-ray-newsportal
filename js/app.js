@@ -25,8 +25,10 @@ const loadCategoryDetails = (id) => {
         .catch(error => console.log(error));
 }
 
-const displayCategoryDetails = category_details => {
-    // console.log(category_details)
+const displayCategoryDetails = (category_details) => {
+    const newsNumber = document.getElementById('news-number');
+    newsNumber.value = `${category_details.length}  items found for this category`;
+
     const noData = document.getElementById('no-data');
     if (category_details.length === 0) {
         noData.classList.remove('d-none')
@@ -40,6 +42,7 @@ const displayCategoryDetails = category_details => {
     categoryDetails.textContent = "";
     category_details.forEach(view => {
         // console.log(view)
+
         const { _id, thumbnail_url, details, author, total_view, title } = view;
         // console.log(thumbnail_url, details, author, total_view, title)
         // console.log(typeof details, typeof thumbnail_url)
