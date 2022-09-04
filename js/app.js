@@ -47,11 +47,15 @@ const displayCategoryDetails = category_details => {
       <div class="card-body">
         <h4 class="card-title pb-3 fw-bolder">${title?title:'Not Available'}</h4>
         <p class="card-text ">${details?details.slice(0,200)+'...':'Not Available'}</p>
-        <div class="row row-cols-3 gx-5">
-        <img src="${author.img}" class="rounded-circle" style="max-height:70px;width:70px">
-        <h6>a</h6>
-
+        <div class="row row-cols-3  justify-content-between align-items-center pt-4">
+        <div class="d-flex align-items-center">
+        <img src="${author.img?author.img:'No Image Available'}" class="rounded-circle me-4" style="max-height:60px;width:80px">
+        
+        <h6>${author.name?author.name:'Not Available'}</h6>
         </div>
+
+       <p class="fs-4 fw-semibold text-dark"><i class="fa-solid fa-eye me-3"></i>${total_view?total_view:'No views'}</p>
+      <button type="button" class="btn btn-primary py-2" data-bs-toggle="modal" data-bs-target="#exampleModal">See More</button>
       </div>
     </div>
   </div>
