@@ -11,12 +11,22 @@ const displayCatList = category_lists => {
         const li = document.createElement('li');
         li.classList.add('list-group-item', 'border-0', 'p-4', 'fs-5', 'ms-3')
         li.innerHTML = `
-        <a onclick ="loadCategoryDetails('${cat_list.category_id}')" href="#" class="text-decoration-none text-secondary ">${cat_list.category_name}</a>
-        `
+        <a onclick ="loadCategoryDetails('${cat_list.category_id}')" href="#" class="text-decoration-none text-secondary">${cat_list.category_name}</a>
+        `;
+
         categoryLists.appendChild(li);
 
     });
-
+    //
+    var btns = document.querySelectorAll(".list-group-item");
+    btns.forEach(item => {
+        item.addEventListener("click", () => {
+            var selected = document.getElementsByClassName("activeList");
+            selected[0].className = selected[0].className.replace(" activeList", "");
+            item.className += " activeList";
+        });
+    });
+    // 
 }
 const setSpinner = isLoading => {
     const spinner = document.getElementById('spinner');
@@ -65,7 +75,8 @@ const displayCategoryDetails = (category_details) => {
     <div class="col-md-8 ps-4  d-flex align-items-center ">
       <div class="card-body">
         <h4 class="card-title pb-3 fw-bolder">${title?title:'Not Available'}</h4>
-        <p class="card-text ">${details?details.slice(0,200)+'...':'Not Available'}</p>
+        <p class="card-text ">${details ? details.slice(0, 200) + '...' : 'Not Available'}</p>
+        <button onclick="loadDetailsModal('${_id}')" type="button" class="btn btn-primary py-2 " data-bs-toggle="modal" data-bs-target="#categoryModal">See More</button>
         <div class="row row-cols-3  justify-content-between align-items-center pt-4">
         <div class="d-flex align-items-center">
         <img src="${author.img?author.img:'No Image Available'}" class="rounded-circle me-4" style="max-height:60px;width:80px">
@@ -74,7 +85,7 @@ const displayCategoryDetails = (category_details) => {
         </div>
 
        <p class="fs-4 fw-semibold text-dark"><i class="fa-solid fa-eye me-3 "></i>${total_view?total_view:'No views'}</p>
-      <button onclick="loadDetailsModal('${_id}')" type="button" class="btn btn-primary py-2" data-bs-toggle="modal" data-bs-target="#categoryModal">See More</button>
+      
       </div>
     </div>
   </div>

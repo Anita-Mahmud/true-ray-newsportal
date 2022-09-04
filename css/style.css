@@ -1,8 +1,18 @@
-.pro-name {
-    font-family: 'Satisfy', cursive;
-}
-
-a:hover {
-    border-bottom: 2px solid #03256C;
-    padding-bottom: 7px;
-}
+    .pro-name {
+        font-family: 'Satisfy', cursive;
+    }
+    
+    a:hover {
+        border-bottom: 2px solid #03256C;
+        padding-bottom: 7px;
+    }
+    
+    input::placeholder {
+        font-weight: bold;
+        opacity: .5;
+        padding: 10px;
+    }
+    
+    .active {
+        background-color: red;
+    }
