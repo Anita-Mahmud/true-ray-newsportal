@@ -26,16 +26,23 @@ const loadCategoryDetails = (id) => {
 }
 
 const displayCategoryDetails = category_details => {
-    console.log(category_details)
+    // console.log(category_details)
+    const noData = document.getElementById('no-data');
+    if (category_details.length === 0) {
+        noData.classList.remove('d-none')
+    } else {
+        noData.classList.add('d-none')
+    }
     category_details.sort((a, b) => {
         return b.total_view - a.total_view;
     });
     const categoryDetails = document.getElementById('category-details');
     categoryDetails.textContent = "";
     category_details.forEach(view => {
-        // console.log(view.title, view.total_view)
-        const { thumbnail_url, details, author, total_view, title } = view;
-        console.log(thumbnail_url, details, author, total_view, title)
+        // console.log(view)
+        const { _id, thumbnail_url, details, author, total_view, title } = view;
+        // console.log(thumbnail_url, details, author, total_view, title)
+        // console.log(typeof details, typeof thumbnail_url)
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('card', 'mb-3', 'mx-auto', 'p-3');
         cardDiv.innerHTML = `
@@ -55,7 +62,7 @@ const displayCategoryDetails = category_details => {
         </div>
 
        <p class="fs-4 fw-semibold text-dark"><i class="fa-solid fa-eye me-3"></i>${total_view?total_view:'No views'}</p>
-      <button type="button" class="btn btn-primary py-2" data-bs-toggle="modal" data-bs-target="#exampleModal">See More</button>
+      <button onclick="loadDetailsModal('${_id}')" type="button" class="btn btn-primary py-2" data-bs-toggle="modal" data-bs-target="#categoryModal">See More</button>
       </div>
     </div>
   </div>
@@ -64,4 +71,38 @@ const displayCategoryDetails = category_details => {
     })
 
 }
+const loadDetailsModal = (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayDetailsModal(data.data))
+        .catch(error => console.log(error));
+}
+const displayDetailsModal = (modal_details) => {
+    const modalDetail = modal_details[0];
+    const modalContent = document.getElementById('modal-content');
+    modalContent.innerHTML = `
+     <div class="modal-header">
+                        <h5 class="modal-title" id="categoryModalLabel">${modalDetail.title}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mx-auto">
+                       <img src="${modalDetail.thumbnail_url}" class="img-fluid w-100 mx-auto" style="max-height:330px">
+                       <p class="my-4">${modalDetail.details}</p>
+                       <div class="row row-cols-3  justify-content-between align-items-center pt-4">
+        <div class="d-flex align-items-center">
+        <img src="${modalDetail.author.img?modalDetail.author.img:'No Image Available'}" class="rounded-circle me-4" style="max-height:60px;width:80px">
+        
+        <h6>${modalDetail.author.name?modalDetail.author.name:'Not Available'}</h6>
+        </div>
+
+       <p class="fs-4 fw-semibold text-dark"><i class="fa-solid fa-eye me-3"></i>${modalDetail.total_view?modalDetail.total_view:'No views'}</p>
+      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+    `
+}
+
 loadNewsData()
