@@ -73,7 +73,7 @@ const displayCategoryDetails = (category_details) => {
         <h6>${author.name?author.name:'Not Available'}</h6>
         </div>
 
-       <p class="fs-4 fw-semibold text-dark"><i class="fa-solid fa-eye me-3"></i>${total_view?total_view:'No views'}</p>
+       <p class="fs-4 fw-semibold text-dark"><i class="fa-solid fa-eye me-3 "></i>${total_view?total_view:'No views'}</p>
       <button onclick="loadDetailsModal('${_id}')" type="button" class="btn btn-primary py-2" data-bs-toggle="modal" data-bs-target="#categoryModal">See More</button>
       </div>
     </div>
